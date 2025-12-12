@@ -3,8 +3,11 @@ import { defineAsyncComponent, onMounted, watch, computed } from "vue";
 import type { SearchResult } from "../types/types.ts";
 import { movieStore } from "../stores/movieStore.ts";
 import { storeToRefs } from "pinia";
+import { useRoute, useRouter } from "vue-router";
 
 const MovieRating = defineAsyncComponent(() => import("./partials/MovieRating.vue"))
+const route = useRoute()
+const router = useRouter()
 
 const store = movieStore();
 const { 
@@ -18,9 +21,18 @@ const {
 } = storeToRefs(store)
 
 onMounted(async () => {
-  // Only fetch if we don't have popular movies data or if we're on page 0
-  if (popularMoviesList.value.page === 0 || popularMoviesList.value.results.length === 0) {
-    await store.fetchPopularMovies(1);
+  // Get page from query params if available
+  const pageFromUrl = parseInt(route.query.page as string) || 1;
+  const searchFromUrl = route.query.search as string || "";
+  
+  if (searchFromUrl) {
+    // If there's a search query in URL, perform search
+    await store.searchMovieList(searchFromUrl, parseInt(route.query.searchPage as string) || 1);
+  } else {
+    // Load popular movies with the page from URL or fetch if no data
+    if (popularMoviesList.value.page === 0 || popularMoviesList.value.results.length === 0 || currentPopularPage.value !== pageFromUrl) {
+      await store.fetchPopularMovies(pageFromUrl);
+    }
   }
 })
 
@@ -59,11 +71,32 @@ const searchPageNumbers = computed(() => {
 
 async function goToPopularPage(page: number) {
   if (page === currentPopularPage.value || isLoadingPopular.value) return;
+  
+  // Update URL with page parameter
+  router.push({ 
+    path: '/', 
+    query: { 
+      ...route.query, 
+      page: page.toString() 
+    } 
+  });
+  
   await store.goToPopularPage(page);
 }
 
 async function goToSearchPage(page: number) {
   if (page === currentSearchPage.value || !searchQuery.value) return;
+  
+  // Update URL with search page parameter
+  router.push({ 
+    path: '/', 
+    query: { 
+      ...route.query, 
+      searchPage: page.toString(),
+      search: searchQuery.value 
+    } 
+  });
+  
   await store.goToSearchPage(page);
 }
 

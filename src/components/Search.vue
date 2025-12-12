@@ -2,9 +2,13 @@
 
 import { ref } from "vue";
 import { movieStore } from "../stores/movieStore.ts";
+import { useRoute, useRouter } from "vue-router";
 
 const focused = ref(false);
 const searchQuery = ref('')
+const route = useRoute()
+const router = useRouter()
+
 const store = movieStore();
 const {searchMovieList, resetSearch} = store;
 
@@ -12,6 +16,15 @@ async function handleSearch() {
   if (!searchQuery.value.trim()) return;
   
   try {
+    // Update URL with search parameter
+    router.push({ 
+      path: '/', 
+      query: { 
+        search: searchQuery.value,
+        searchPage: '1' 
+      } 
+    });
+    
     await searchMovieList(String(searchQuery.value), 1);
   } catch (err) {
     console.error(err)
@@ -21,6 +34,12 @@ async function handleSearch() {
 function clearSearch() {
   searchQuery.value = "";
   resetSearch();
+  
+  // Remove search parameters from URL
+  router.push({ 
+    path: '/', 
+    query: {} 
+  });
 }
 </script>
 
