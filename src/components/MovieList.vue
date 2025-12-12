@@ -1,32 +1,43 @@
 <script lang="ts" setup>
-import { defineAsyncComponent, onMounted, ref, watch, computed } from "vue";
-import type { SearchResult, SearchResults } from "../types/types.ts";
-import { fetchPopularMovies } from "../api/tmdb.ts";
+import { defineAsyncComponent, onMounted, watch, computed } from "vue";
+import type { SearchResult } from "../types/types.ts";
 import { movieStore } from "../stores/movieStore.ts";
 import { storeToRefs } from "pinia";
 
-const movies = ref<SearchResult[] | []>([])
-const popularMoviesPage = ref<number>(1)
-const popularMoviesTotalPages = ref<number>(0)
-const isLoadingPopular = ref<boolean>(false)
-
 const MovieRating = defineAsyncComponent(() => import("./partials/MovieRating.vue"))
 
+const store = movieStore();
+const { 
+  popularMoviesList, 
+  currentPopularPage, 
+  isLoadingPopular,
+  searchList, 
+  searchQuery, 
+  isLoadingMore, 
+  currentSearchPage 
+} = storeToRefs(store)
+
 onMounted(async () => {
-  const data: SearchResults = await fetchPopularMovies(1);
-  movies.value = data.results;
-  popularMoviesTotalPages.value = data.total_pages;
+  // Only fetch if we don't have popular movies data or if we're on page 0
+  if (popularMoviesList.value.page === 0 || popularMoviesList.value.results.length === 0) {
+    await store.fetchPopularMovies(1);
+  }
 })
 
-const store = movieStore();
-const { searchList, searchQuery, isLoadingMore, currentSearchPage } = storeToRefs(store)
+// Computed property for the current movies to display
+const movies = computed<SearchResult[]>(() => {
+  if (searchQuery.value && searchList.value.results.length > 0) {
+    return searchList.value.results;
+  }
+  return popularMoviesList.value.results;
+})
 
 // Generate page numbers for pagination
 const popularPageNumbers = computed(() => {
   const pages = [];
   const maxPagesToShow = 5;
-  const startPage = Math.max(1, popularMoviesPage.value - 2);
-  const endPage = Math.min(popularMoviesTotalPages.value, startPage + maxPagesToShow - 1);
+  const startPage = Math.max(1, currentPopularPage.value - 2);
+  const endPage = Math.min(popularMoviesList.value.total_pages, startPage + maxPagesToShow - 1);
   
   for (let i = startPage; i <= endPage; i++) {
     pages.push(i);
@@ -47,16 +58,8 @@ const searchPageNumbers = computed(() => {
 })
 
 async function goToPopularPage(page: number) {
-  if (page === popularMoviesPage.value || isLoadingPopular.value) return;
-  
-  isLoadingPopular.value = true;
-  try {
-    const data: SearchResults = await fetchPopularMovies(page);
-    movies.value = data.results;
-    popularMoviesPage.value = page;
-  } finally {
-    isLoadingPopular.value = false;
-  }
+  if (page === currentPopularPage.value || isLoadingPopular.value) return;
+  await store.goToPopularPage(page);
 }
 
 async function goToSearchPage(page: number) {
@@ -66,22 +69,22 @@ async function goToSearchPage(page: number) {
 
 watch(searchList, async (newValue) => {
   if (!searchQuery.value) {
-    const data: SearchResults = await fetchPopularMovies(1);
-    movies.value = data.results;
-    popularMoviesPage.value = 1;
+    // Reset to popular movies page 1 when exiting search
+    if (popularMoviesList.value.page !== 1) {
+      await store.fetchPopularMovies(1);
+    }
     return;
   }
 
   if (Array.isArray(newValue.results) && newValue.results.length === 0 && searchQuery.value) {
     alert('Niciun rezultat gasit. Ne intoarcem la pagina principala');
     store.resetSearch();
-    const data: SearchResults = await fetchPopularMovies(1);
-    movies.value = data.results;
-    popularMoviesPage.value = 1;
+    // Go back to current popular movies page or page 1
+    if (popularMoviesList.value.page === 0) {
+      await store.fetchPopularMovies(1);
+    }
     return;
   }
- 
-  movies.value = newValue.results;
 })
 </script>
 
@@ -110,11 +113,11 @@ watch(searchList, async (newValue) => {
     <!-- Page-based Pagination Controls -->
     <div class="flex justify-center items-center gap-2 p-6">
       <!-- Popular Movies Pagination -->
-      <div v-if="!searchQuery && popularMoviesTotalPages > 1" class="flex items-center gap-2">
+      <div v-if="!searchQuery && popularMoviesList.total_pages > 1" class="flex items-center gap-2">
         <!-- Previous Button -->
         <button 
-          @click="goToPopularPage(popularMoviesPage - 1)"
-          :disabled="popularMoviesPage <= 1 || isLoadingPopular"
+          @click="goToPopularPage(currentPopularPage - 1)"
+          :disabled="currentPopularPage <= 1 || isLoadingPopular"
           class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           Previous
@@ -128,7 +131,7 @@ watch(searchList, async (newValue) => {
           :disabled="isLoadingPopular"
           :class="[
             'px-3 py-2 rounded transition-colors cursor-pointer',
-            page === popularMoviesPage 
+            page === currentPopularPage 
               ? 'bg-blue-600 text-white' 
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           ]"
@@ -138,8 +141,8 @@ watch(searchList, async (newValue) => {
         
         <!-- Next Button -->
         <button 
-          @click="goToPopularPage(popularMoviesPage + 1)"
-          :disabled="popularMoviesPage >= popularMoviesTotalPages || isLoadingPopular"
+          @click="goToPopularPage(currentPopularPage + 1)"
+          :disabled="currentPopularPage >= popularMoviesList.total_pages || isLoadingPopular"
           class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           Next
@@ -147,7 +150,7 @@ watch(searchList, async (newValue) => {
         
         <!-- Page Info -->
         <span class="text-gray-500 ml-4">
-          Page {{ popularMoviesPage }} of {{ popularMoviesTotalPages }}
+          Page {{ currentPopularPage }} of {{ popularMoviesList.total_pages }}
         </span>
         
         <!-- Loading Indicator with Spinner -->

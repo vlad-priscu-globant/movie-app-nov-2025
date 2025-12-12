@@ -16,6 +16,13 @@ export const movieStore = defineStore('movieStore', () => {
    * SearchResult = each value will follow the SearchResult interface/type.
    */
   const movieCache = ref<Record<number, SearchResult>>({})
+  
+  // Popular movies state
+  const popularMoviesList = ref<SearchResults>({ page: 0, results: [], total_pages: 0, total_results: 0 })
+  const currentPopularPage = ref<number>(1)
+  const isLoadingPopular = ref<boolean>(false)
+  
+  // Search state
   const searchList = ref<SearchResults>({ page: 0, results: [], total_pages: 0, total_results: 0 })
   const searchQuery = ref<string>("")
   const currentSearchPage = ref<number>(1)
@@ -60,6 +67,37 @@ export const movieStore = defineStore('movieStore', () => {
     }
   }
 
+  async function fetchPopularMovies(page: number = 1): Promise<SearchResults> {
+    currentPopularPage.value = page;
+    
+    // Import the API function here to avoid circular dependency
+    const { fetchPopularMovies: fetchPopularMoviesAPI } = await import("../api/tmdb.ts");
+    const data = await fetchPopularMoviesAPI(page);
+    
+    // Store the popular movies data
+    popularMoviesList.value = data;
+    
+    return data;
+  }
+
+  async function goToPopularPage(page: number): Promise<SearchResults | null> {
+    if (isLoadingPopular.value) {
+      return null;
+    }
+    
+    if (page < 1 || (popularMoviesList.value.total_pages > 0 && page > popularMoviesList.value.total_pages)) {
+      return null;
+    }
+    
+    isLoadingPopular.value = true;
+    try {
+      const data = await fetchPopularMovies(page);
+      return data;
+    } finally {
+      isLoadingPopular.value = false;
+    }
+  }
+
   function resetSearch(): void {
     searchList.value = { page: 0, results: [], total_pages: 0, total_results: 0 };
     searchQuery.value = "";
@@ -68,8 +106,18 @@ export const movieStore = defineStore('movieStore', () => {
   }
 
   return {
+    // Movie cache
     movieCache, 
-    fetchMovie, 
+    fetchMovie,
+    
+    // Popular movies
+    popularMoviesList,
+    currentPopularPage,
+    isLoadingPopular,
+    fetchPopularMovies,
+    goToPopularPage,
+    
+    // Search functionality 
     searchList, 
     searchMovieList, 
     searchQuery,
