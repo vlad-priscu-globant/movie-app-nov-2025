@@ -5,11 +5,14 @@ import { movieStore } from "../stores/movieStore.ts";
 
 const focused = ref(false);
 const searchQuery = ref('')
-const {searchMovieList} = movieStore();
+const store = movieStore();
+const {searchMovieList, resetSearch} = store;
 
 async function handleSearch() {
+  if (!searchQuery.value.trim()) return;
+  
   try {
-    await searchMovieList(String(searchQuery.value));
+    await searchMovieList(String(searchQuery.value), 1);
   } catch (err) {
     console.error(err)
   }
@@ -17,6 +20,7 @@ async function handleSearch() {
 
 function clearSearch() {
   searchQuery.value = "";
+  resetSearch();
 }
 </script>
 

@@ -18,8 +18,8 @@ export async function fetchMovieById(movie_id: number) {
   return res.json()
 }
 
-export async function searchMovie(query: string) {
-  const res = await fetch(`${baseUrl}/search/movie?query=${query}&language=en-US&page=1`, fetchHeaders)
+export async function searchMovie(query: string, page: number = 1) {
+  const res = await fetch(`${baseUrl}/search/movie?query=${query}&language=en-US&page=${page}`, fetchHeaders)
   if (!res.ok) throw new Error(`Failed to fetch popular movies: ${res.status}`)
   return res.json()
 }
