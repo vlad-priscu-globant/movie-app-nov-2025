@@ -43,7 +43,7 @@ function clearSearch() {
     />
 
     <button
-      class="absolute right-2 top-1/2 -translate-y-1/2 text-white hover:text-red-500 transition-colors"
+      class="absolute right-2 top-1/2 -translate-y-1/2 text-white hover:text-red-500 transition-colors cursor-pointer"
       @click="handleSearch"
     >
       <svg v-if="!searchQuery.length" class="w-5 h-5"

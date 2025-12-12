@@ -101,6 +101,12 @@ watch(searchList, async (newValue) => {
       </div>
     </div>
     
+    <!-- Loading Spinner for Movies -->
+    <div v-if="isLoadingPopular || isLoadingMore" class="flex justify-center items-center p-8">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <span class="ml-3 text-lg text-gray-600">Loading movies...</span>
+    </div>
+
     <!-- Page-based Pagination Controls -->
     <div class="flex justify-center items-center gap-2 p-6">
       <!-- Popular Movies Pagination -->
@@ -109,7 +115,7 @@ watch(searchList, async (newValue) => {
         <button 
           @click="goToPopularPage(popularMoviesPage - 1)"
           :disabled="popularMoviesPage <= 1 || isLoadingPopular"
-          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           Previous
         </button>
@@ -121,7 +127,7 @@ watch(searchList, async (newValue) => {
           @click="goToPopularPage(page)"
           :disabled="isLoadingPopular"
           :class="[
-            'px-3 py-2 rounded transition-colors',
+            'px-3 py-2 rounded transition-colors cursor-pointer',
             page === popularMoviesPage 
               ? 'bg-blue-600 text-white' 
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -134,7 +140,7 @@ watch(searchList, async (newValue) => {
         <button 
           @click="goToPopularPage(popularMoviesPage + 1)"
           :disabled="popularMoviesPage >= popularMoviesTotalPages || isLoadingPopular"
-          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           Next
         </button>
@@ -144,8 +150,11 @@ watch(searchList, async (newValue) => {
           Page {{ popularMoviesPage }} of {{ popularMoviesTotalPages }}
         </span>
         
-        <!-- Loading Indicator -->
-        <span v-if="isLoadingPopular" class="text-blue-600 ml-2">Loading...</span>
+        <!-- Loading Indicator with Spinner -->
+        <div v-if="isLoadingPopular" class="flex items-center ml-4">
+          <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+          <span class="text-blue-600 ml-2">Loading...</span>
+        </div>
       </div>
       
       <!-- Search Results Pagination -->
@@ -154,7 +163,7 @@ watch(searchList, async (newValue) => {
         <button 
           @click="goToSearchPage(currentSearchPage - 1)"
           :disabled="currentSearchPage <= 1 || isLoadingMore"
-          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           Previous
         </button>
@@ -166,7 +175,7 @@ watch(searchList, async (newValue) => {
           @click="goToSearchPage(page)"
           :disabled="isLoadingMore"
           :class="[
-            'px-3 py-2 rounded transition-colors',
+            'px-3 py-2 rounded transition-colors cursor-pointer',
             page === currentSearchPage 
               ? 'bg-green-600 text-white' 
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -179,7 +188,7 @@ watch(searchList, async (newValue) => {
         <button 
           @click="goToSearchPage(currentSearchPage + 1)"
           :disabled="currentSearchPage >= searchList.total_pages || isLoadingMore"
-          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="px-3 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           Next
         </button>
@@ -189,8 +198,11 @@ watch(searchList, async (newValue) => {
           Page {{ currentSearchPage }} of {{ searchList.total_pages }}
         </span>
         
-        <!-- Loading Indicator -->
-        <span v-if="isLoadingMore" class="text-green-600 ml-2">Loading...</span>
+        <!-- Loading Indicator with Spinner -->
+        <div v-if="isLoadingMore" class="flex items-center ml-4">
+          <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-green-600"></div>
+          <span class="text-green-600 ml-2">Loading...</span>
+        </div>
       </div>
     </div>
   </div>
