@@ -1,0 +1,243 @@
+{
+  "favorites": [
+    {
+      "adult": false,
+      "backdrop_path": "/sItIskd5xpiE64bBWYwZintkGf3.jpg",
+      "belongs_to_collection": {
+        "id": 1494663,
+        "name": "Ballerina Collection",
+        "poster_path": "/xzAyYTHqWtLmqtscUr8cZqaP7lu.jpg",
+        "backdrop_path": null
+      },
+      "budget": 90000000,
+      "genres": [
+        {
+          "id": 28,
+          "name": "Action"
+        },
+        {
+          "id": 53,
+          "name": "Thriller"
+        },
+        {
+          "id": 80,
+          "name": "Crime"
+        }
+      ],
+      "homepage": "https://johnwick.movie/film/ballerina",
+      "id": 541671,
+      "imdb_id": "tt7181546",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Ballerina",
+      "overview": "Taking place during the events of John Wick: Chapter 3 – Parabellum, Eve Macarro begins her training in the assassin traditions of the Ruska Roma.",
+      "popularity": 763.892,
+      "poster_path": "/2VUmvqsHb6cEtdfscEA6fqqVzLg.jpg",
+      "production_companies": [
+        {
+          "id": 3528,
+          "logo_path": "/cCzCClIzIh81Fa79hpW5nXoUsHK.png",
+          "name": "Thunder Road",
+          "origin_country": "US"
+        },
+        {
+          "id": 23008,
+          "logo_path": "/5SarYupipdiejsEqUkwu1SpYfru.png",
+          "name": "87Eleven",
+          "origin_country": "US"
+        },
+        {
+          "id": 1632,
+          "logo_path": "/cisLn1YAUuptXVBa0xjq7ST9cH0.png",
+          "name": "Lionsgate",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2025-06-04",
+      "revenue": 110653000,
+      "runtime": 125,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Vengeance has a new face.",
+      "title": "Ballerina",
+      "video": false,
+      "vote_average": 7.34,
+      "vote_count": 762,
+      "addedBy": "guest"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/x58Gk2ZGU5AEBp25MQe2nhZhd5z.jpg",
+      "belongs_to_collection": {
+        "id": 847029,
+        "name": "The Old Guard Collection",
+        "poster_path": "/nxPsCTVDH4HITAlSBIxxlpDsHNN.jpg",
+        "backdrop_path": "/A7fKA5gQEUh2Rf9s4zaYyIpCU6o.jpg"
+      },
+      "budget": 7000000,
+      "genres": [
+        {
+          "id": 28,
+          "name": "Action"
+        },
+        {
+          "id": 14,
+          "name": "Fantasy"
+        }
+      ],
+      "homepage": "https://www.netflix.com/title/81328881",
+      "id": 846422,
+      "imdb_id": "tt14961624",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Old Guard 2",
+      "overview": "Andy and her team of immortal warriors fight with renewed purpose as they face a powerful new foe threatening their mission to protect humanity.",
+      "popularity": 748.939,
+      "poster_path": "/wqfu3bPLJaEWJVk3QOm0rKhxf1A.jpg",
+      "production_companies": [
+        {
+          "id": 82819,
+          "logo_path": "/gXfFl9pRPaoaq14jybEn1pHeldr.png",
+          "name": "Skydance Media",
+          "origin_country": "US"
+        },
+        {
+          "id": 3574,
+          "logo_path": "/j3iU6FoWplGPoO1Vxn8fFHX4VPE.png",
+          "name": "Denver & Delilah Productions",
+          "origin_country": "US"
+        },
+        {
+          "id": 159794,
+          "logo_path": null,
+          "name": "Marc Evans Productions",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2025-07-01",
+      "revenue": 0,
+      "runtime": 107,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Eternity has a price.",
+      "title": "The Old Guard 2",
+      "video": false,
+      "vote_average": 6.1,
+      "vote_count": 298,
+      "addedBy": "guest"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/5h2EsPKNDdB3MAtOk9MB9Ycg9Rz.jpg",
+      "belongs_to_collection": {
+        "id": 1084247,
+        "name": "Zootopia Collection",
+        "poster_path": "/u8597pdwSHOvcJQhP2cLi7a67ZW.jpg",
+        "backdrop_path": "/1WDssJDYInLA4Avg45lgy3WM6Ly.jpg"
+      },
+      "budget": 150000000,
+      "genres": [
+        {
+          "id": 16,
+          "name": "Animation"
+        },
+        {
+          "id": 35,
+          "name": "Comedy"
+        },
+        {
+          "id": 12,
+          "name": "Adventure"
+        },
+        {
+          "id": 10751,
+          "name": "Family"
+        },
+        {
+          "id": 9648,
+          "name": "Mystery"
+        }
+      ],
+      "homepage": "https://movies.disney.com/zootopia-2",
+      "id": 1084242,
+      "imdb_id": "tt26443597",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Zootopia 2",
+      "overview": "After cracking the biggest case in Zootopia's history, rookie cops Judy Hopps and Nick Wilde find themselves on the twisting trail of a great mystery when Gary De’Snake arrives and turns the animal metropolis upside down. To crack the case, Judy and Nick must go undercover to unexpected new parts of town, where their growing partnership is tested like never before.",
+      "popularity": 431.2602,
+      "poster_path": "/oJ7g2CifqpStmoYQyaLQgEU32qO.jpg",
+      "production_companies": [
+        {
+          "id": 6125,
+          "logo_path": "/tzsMJBJZINu7GHzrpYzpReWhh66.png",
+          "name": "Walt Disney Animation Studios",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2025-11-26",
+      "revenue": 1136670004,
+      "runtime": 107,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Norwegian",
+          "iso_639_1": "no",
+          "name": "Norsk"
+        },
+        {
+          "english_name": "Spanish",
+          "iso_639_1": "es",
+          "name": "Español"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Zootopia will be changed furrrever...",
+      "title": "Zootopia 2",
+      "video": false,
+      "vote_average": 7.7,
+      "vote_count": 592,
+      "addedBy": "guest"
+    }
+  ]
+}

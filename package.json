@@ -19,10 +19,16 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "devBackend": "nodemon server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "jsonwebtoken": "^9.0.2",
     "pinia": "^3.0.3",
     "tailwindcss": "^4.1.17",
     "vue": "^3.5.22",
@@ -38,6 +44,7 @@
     "typescript": "~5.9.0",
     "vite": "^7.1.11",
     "vite-plugin-vue-devtools": "^8.0.3",
-    "vue-tsc": "^3.1.1"
+    "vue-tsc": "^3.1.1",
+    "nodemon": "^3.1.10"
   }
 }

@@ -1,5 +1,11 @@
 <script lang="ts" setup>
 import Search from "./components/Search.vue";
+import { fakeLogin } from "@/api/localDb.ts";
+async function handleLogin() {
+  const res = await fakeLogin();
+  localStorage.setItem("token", res.token);
+  console.log('after login', res.token)
+}
 </script>
 
 <template>
@@ -8,7 +14,7 @@ import Search from "./components/Search.vue";
       <RouterLink to="/"><h1 class="text-3xl font-bold text-red-600">MovieApp</h1></RouterLink>
       <nav class="flex gap-6">
         <Search></Search>
-        <button class="text-sm bg-red-600 px-4 py-1 rounded hover:bg-red-700">Login</button>
+        <button class="text-sm bg-red-600 px-4 py-1 rounded hover:bg-red-700" @click="handleLogin">Login</button>
       </nav>
     </header>
     <main class="p-4">

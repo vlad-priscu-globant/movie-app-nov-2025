@@ -3,6 +3,7 @@ import type { SearchResult } from "../types/types.ts";
 import { defineAsyncComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { movieStore } from "../stores/movieStore.ts";
+import FavoriteItem from "@/components/FavoriteItem.vue";
 
 const movie = ref<SearchResult | null>(null)
 const route = useRoute()
@@ -29,6 +30,7 @@ onMounted(async () => {
         <h2 class="text-3xl font-bold mb-2">{{ movie.title }}</h2>
         <MovieRating :movie="movie"></MovieRating>
         <p v-if="movie.overview" class="text-gray-300 leading-relaxed">{{ movie.overview }}</p>
+        <FavoriteItem v-if="movie" :movie="movie" :readOnly="false"></FavoriteItem>
       </div>
     </div>
     <p v-else class="text-center mt-20 text-gray-400">Loading...</p>
