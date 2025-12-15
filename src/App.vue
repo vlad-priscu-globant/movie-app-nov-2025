@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Search from "./components/Search.vue";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 </script>
 
 <template>
@@ -18,6 +19,7 @@ import Search from "./components/Search.vue";
     <footer class="text-center text-gray-500 text-sm p-4 border-t border-gray-700">
       © 2025 MovieApp.
     </footer>
+    <SpeedInsights />
   </div>
 </template>
 
