@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Search from "./components/Search.vue";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 </script>
 
 <template>
