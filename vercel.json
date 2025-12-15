@@ -20,7 +20,7 @@
     }
   ],
   "env": {
-    "VITE_API_URL": "@vite_api_url",
-    "VITE_BASE_URL": "@vite_base_url"
+    "VITE_API_URL": "VITE_API_URL",
+    "VITE_BASE_URL": "VITE_BASE_URL"
   }
 }
