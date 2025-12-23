@@ -1,0 +1,78 @@
+name: "Student 03 - Watchlist Features"
+description: Choose between watchlist UI or watchlist persistence
+title: "Student 03 - [CHOOSE: Watchlist UI OR Watchlist Storage]"
+labels: ["student-exercise", "watchlist", "ui"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 📝 Watchlist Features - Student 03
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 3A: Watchlist UI Components ⭐⭐
+        **Files to modify:** `src/components/MovieList.vue`, `src/components/WatchlistButton.vue` (create)
+        
+        **Description:** Add heart/bookmark icons to movie cards that allow users to add movies to their watchlist. Create visual feedback for selected items.
+        
+        **Skills:** Vue components, event handling, CSS styling, icons
+        
+        ## Task 3B: Watchlist Persistence ⭐⭐⭐
+        **Files to modify:** `src/stores/watchlistStore.ts` (create), `src/components/WatchlistPage.vue` (create)
+        
+        **Description:** Create a complete watchlist system with localStorage persistence and a dedicated page to view saved movies.
+        
+        **Skills:** Pinia state management, Vue Router, localStorage API
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 3A: Watchlist UI Components"
+        - "Task 3B: Watchlist Persistence"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 3A (Watchlist UI Components):
+        - [ ] Create WatchlistButton.vue component
+        - [ ] Add heart/bookmark icon (empty and filled states)
+        - [ ] Integrate button into MovieList.vue cards
+        - [ ] Implement click toggle functionality
+        - [ ] Add hover effects and transitions
+        - [ ] Ensure responsive design on mobile
+        
+        ## If choosing Task 3B (Watchlist Persistence):
+        - [ ] Create watchlistStore.ts with Pinia
+        - [ ] Implement add/remove/toggle methods
+        - [ ] Add localStorage persistence
+        - [ ] Create WatchlistPage.vue component
+        - [ ] Add route for /watchlist in router
+        - [ ] Display watchlist count in navigation
+        - [ ] Handle empty state with friendly message
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/03-watchlist-[task])"
+        - label: "I have updated any relevant documentation"

@@ -1,0 +1,77 @@
+name: "Student 04 - Loading States"
+description: Choose between skeleton loaders or loading animations
+title: "Student 04 - [CHOOSE: Skeleton Loaders OR Loading Animations]"
+labels: ["student-exercise", "loading", "ux"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # ⏳ Loading States - Student 04
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 4A: Skeleton Loaders ⭐⭐
+        **Files to modify:** `src/components/MovieList.vue`, `src/components/SkeletonLoader.vue` (create)
+        
+        **Description:** Replace basic loading text with animated skeleton placeholders that mimic the structure of movie cards.
+        
+        **Skills:** CSS animations, component composition, loading states
+        
+        ## Task 4B: Advanced Loading Animations ⭐⭐⭐
+        **Files to modify:** `src/components/LoadingSpinner.vue` (create), `src/assets/main.css`
+        
+        **Description:** Create custom SVG loading animations and integrate them throughout the app with smooth transitions.
+        
+        **Skills:** SVG animations, CSS keyframes, Vue transitions
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 4A: Skeleton Loaders"
+        - "Task 4B: Advanced Loading Animations"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 4A (Skeleton Loaders):
+        - [ ] Create SkeletonLoader.vue component
+        - [ ] Design skeleton that matches movie card layout
+        - [ ] Add shimmer animation effect
+        - [ ] Replace loading text in MovieList.vue
+        - [ ] Ensure skeleton shows for minimum 500ms
+        - [ ] Test with slow network conditions
+        
+        ## If choosing Task 4B (Advanced Loading Animations):
+        - [ ] Create LoadingSpinner.vue with custom SVG
+        - [ ] Design 3 different loading animations
+        - [ ] Add CSS keyframe animations
+        - [ ] Integrate into Search, MovieDetail, and API calls
+        - [ ] Add fade-in/fade-out transitions
+        - [ ] Optimize animations for 60fps performance
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/04-loading-[task])"
+        - label: "I have updated any relevant documentation"

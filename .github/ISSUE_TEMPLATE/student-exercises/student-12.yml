@@ -1,0 +1,79 @@
+name: "Student 12 - TypeScript Enhancement"
+description: Choose between generic utilities or strict typing
+title: "Student 12 - [CHOOSE: Generic Utilities OR Strict Typing]"
+labels: ["student-exercise", "typescript", "types"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🔧 TypeScript Enhancement - Student 12
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 12A: Generic Utilities ⭐⭐
+        **Files to modify:** `src/utils/typeHelpers.ts` (create), `src/types/generics.ts` (create)
+        
+        **Description:** Create reusable generic utility types and functions for better type safety and code reuse.
+        
+        **Skills:** TypeScript generics, utility types, type inference
+        
+        ## Task 12B: Strict Type Safety ⭐⭐⭐
+        **Files to modify:** `src/types/api.ts` (create), `src/api/tmdb.ts`, `src/stores/movieStore.ts`
+        
+        **Description:** Implement strict typing throughout the application with branded types and exhaustive type checking.
+        
+        **Skills:** Advanced TypeScript, branded types, discriminated unions
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 12A: Generic Utilities"
+        - "Task 12B: Strict Type Safety"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 12A (Generic Utilities):
+        - [ ] Create typeHelpers.ts with Pick, Omit, Partial utilities
+        - [ ] Implement generic API response wrapper type
+        - [ ] Add generic form validation helper types
+        - [ ] Create reusable state management types
+        - [ ] Add type-safe event handler utilities
+        - [ ] Document all generic types with TSDoc
+        - [ ] Ensure zero TypeScript errors
+        
+        ## If choosing Task 12B (Strict Type Safety):
+        - [ ] Create api.ts with strict API response types
+        - [ ] Implement branded types for IDs (MovieId, UserId)
+        - [ ] Add exhaustive switch case checking
+        - [ ] Create discriminated unions for loading states
+        - [ ] Add strict null checking throughout
+        - [ ] Implement type guards for runtime validation
+        - [ ] Enable strictest TypeScript compiler options
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/12-typescript-[task])"
+        - label: "I have updated any relevant documentation"

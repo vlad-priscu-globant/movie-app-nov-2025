@@ -1,0 +1,79 @@
+name: "Student 06 - Theme System"
+description: Choose between dark mode toggle or theme customization
+title: "Student 06 - [CHOOSE: Dark Mode Toggle OR Theme Customization]"
+labels: ["student-exercise", "theming", "ui"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🎨 Theme System - Student 06
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 6A: Dark Mode Toggle ⭐⭐
+        **Files to modify:** `src/components/ThemeToggle.vue` (create), `src/assets/themes.css` (create)
+        
+        **Description:** Implement a dark/light mode toggle with smooth transitions and system preference detection.
+        
+        **Skills:** CSS custom properties, localStorage, media queries
+        
+        ## Task 6B: Theme Customization ⭐⭐⭐
+        **Files to modify:** `src/stores/themeStore.ts` (create), `src/components/ThemeCustomizer.vue` (create)
+        
+        **Description:** Create a theme customization panel allowing users to modify colors, fonts, and layout preferences.
+        
+        **Skills:** Advanced CSS variables, Pinia state management, color theory
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 6A: Dark Mode Toggle"
+        - "Task 6B: Theme Customization"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 6A (Dark Mode Toggle):
+        - [ ] Create ThemeToggle.vue with sun/moon icons
+        - [ ] Define CSS custom properties for light/dark themes
+        - [ ] Detect system preference with prefers-color-scheme
+        - [ ] Persist user choice in localStorage
+        - [ ] Add smooth transition animations (0.3s)
+        - [ ] Update all existing components to use theme variables
+        - [ ] Test accessibility with high contrast modes
+        
+        ## If choosing Task 6B (Theme Customization):
+        - [ ] Create themeStore.ts with color/font/spacing options
+        - [ ] Build ThemeCustomizer.vue panel with live preview
+        - [ ] Implement color picker for primary/secondary colors
+        - [ ] Add font size and family selection
+        - [ ] Create preset themes (Dark, Light, Retro, Neon)
+        - [ ] Export/import theme configurations
+        - [ ] Ensure WCAG AA contrast compliance
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/06-theme-[task])"
+        - label: "I have updated any relevant documentation"

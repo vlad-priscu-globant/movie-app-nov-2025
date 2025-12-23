@@ -1,0 +1,76 @@
+name: "Student 01 - Rating Features"
+description: Choose between rating persistence or rating visualization
+title: "Student 01 - [CHOOSE: Rating Persistence OR Rating Histogram]"
+labels: ["student-exercise", "good-first-issue", "rating"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 📊 Rating Features - Student 01
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 1A: Rating Persistence ⭐⭐
+        **Files to modify:** `src/stores/movieStore.ts`, `src/components/partials/MovieRating.vue`
+        
+        **Description:** Currently, movie ratings are lost when the page refreshes. Implement localStorage to persist user ratings across sessions.
+        
+        **Skills:** Vue composables, Pinia state management, localStorage API
+        
+        ## Task 1B: Rating Histogram ⭐⭐⭐
+        **Files to modify:** `src/components/MovieDetail.vue`, `src/utils/chart.ts` (create)
+        
+        **Description:** Add a visual chart showing the distribution of ratings for each movie using Chart.js or a simple CSS-based chart.
+        
+        **Skills:** Data visualization, CSS styling, Vue props
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 1A: Rating Persistence"
+        - "Task 1B: Rating Histogram"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 1A (Rating Persistence):
+        - [ ] Create localStorage helper functions in movieStore.ts
+        - [ ] Save rating to localStorage when user rates a movie
+        - [ ] Load saved ratings when component mounts
+        - [ ] Handle edge cases (invalid data, storage limits)
+        - [ ] Test persistence across browser sessions
+        
+        ## If choosing Task 1B (Rating Histogram):
+        - [ ] Install Chart.js dependency or create CSS-based solution
+        - [ ] Create chart component in utils/chart.ts
+        - [ ] Calculate rating distribution from sample data
+        - [ ] Integrate chart into MovieDetail.vue
+        - [ ] Style chart to match app theme
+        - [ ] Add responsive design for mobile
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/01-rating-[task])"
+        - label: "I have updated any relevant documentation"

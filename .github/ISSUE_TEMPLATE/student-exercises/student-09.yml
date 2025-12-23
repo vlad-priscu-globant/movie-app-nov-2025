@@ -1,0 +1,79 @@
+name: "Student 09 - Micro-interactions"
+description: Choose between hover effects or scroll animations
+title: "Student 09 - [CHOOSE: Hover Effects OR Scroll Animations]"
+labels: ["student-exercise", "animations", "ui"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # ✨ Micro-interactions - Student 09
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 9A: Advanced Hover Effects ⭐⭐
+        **Files to modify:** `src/components/MovieList.vue`, `src/assets/interactions.css` (create)
+        
+        **Description:** Create engaging hover effects for movie cards with smooth transitions, scale effects, and overlay animations.
+        
+        **Skills:** CSS transforms, transitions, pseudo-elements
+        
+        ## Task 9B: Scroll Animations ⭐⭐⭐
+        **Files to modify:** `src/utils/scrollAnimations.ts` (create), `src/components/MovieList.vue`
+        
+        **Description:** Implement scroll-triggered animations using Intersection Observer API for fade-in and slide-up effects.
+        
+        **Skills:** Intersection Observer, CSS animations, performance optimization
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 9A: Advanced Hover Effects"
+        - "Task 9B: Scroll Animations"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 9A (Advanced Hover Effects):
+        - [ ] Add scale transform (1.05x) on movie card hover
+        - [ ] Create smooth shadow expansion effect
+        - [ ] Implement image overlay with movie details
+        - [ ] Add rating stars animation on hover
+        - [ ] Ensure transitions are 300ms with ease-out
+        - [ ] Test performance with many cards
+        - [ ] Add reduced motion support for accessibility
+        
+        ## If choosing Task 9B (Scroll Animations):
+        - [ ] Create scrollAnimations.ts utility with Intersection Observer
+        - [ ] Implement fade-in animation for movie cards
+        - [ ] Add staggered animation delays (50ms between cards)
+        - [ ] Create slide-up effect from bottom
+        - [ ] Add threshold detection for partial visibility
+        - [ ] Optimize performance with disconnect on completion
+        - [ ] Test with rapid scrolling scenarios
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/09-animations-[task])"
+        - label: "I have updated any relevant documentation"

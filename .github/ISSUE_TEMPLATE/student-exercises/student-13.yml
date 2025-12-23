@@ -1,0 +1,79 @@
+name: "Student 13 - Testing Implementation"
+description: Choose between unit tests or component tests
+title: "Student 13 - [CHOOSE: Unit Tests OR Component Tests]"
+labels: ["student-exercise", "testing", "quality"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🧪 Testing Implementation - Student 13
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 13A: Unit Tests ⭐⭐
+        **Files to modify:** `src/utils/__tests__/` (create), `vitest.config.ts` (create)
+        
+        **Description:** Set up Vitest and create comprehensive unit tests for utility functions and store logic.
+        
+        **Skills:** Vitest, test-driven development, mocking
+        
+        ## Task 13B: Component Tests ⭐⭐⭐
+        **Files to modify:** `src/components/__tests__/` (create), `src/test-utils.ts` (create)
+        
+        **Description:** Create Vue component tests with Vue Testing Library, including user interaction testing.
+        
+        **Skills:** Vue Testing Library, component testing, user event simulation
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 13A: Unit Tests"
+        - "Task 13B: Component Tests"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 13A (Unit Tests):
+        - [ ] Install and configure Vitest
+        - [ ] Create tests for debounce utility function
+        - [ ] Test movieStore actions and getters
+        - [ ] Add tests for API error handling
+        - [ ] Mock external dependencies properly
+        - [ ] Achieve 80%+ code coverage
+        - [ ] Add npm test script to package.json
+        
+        ## If choosing Task 13B (Component Tests):
+        - [ ] Install Vue Testing Library
+        - [ ] Create test-utils.ts with custom render function
+        - [ ] Test Search component user interactions
+        - [ ] Test MovieRating component click events
+        - [ ] Mock Pinia stores in tests
+        - [ ] Test component props and emits
+        - [ ] Add accessibility testing with @testing-library/jest-dom
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/13-testing-[task])"
+        - label: "I have updated any relevant documentation"

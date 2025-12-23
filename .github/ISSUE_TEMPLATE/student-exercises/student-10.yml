@@ -1,0 +1,79 @@
+name: "Student 10 - Performance Optimization"
+description: Choose between image optimization or lazy loading
+title: "Student 10 - [CHOOSE: Image Optimization OR Lazy Loading]"
+labels: ["student-exercise", "performance", "optimization"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # ⚡ Performance Optimization - Student 10
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 10A: Image Optimization ⭐⭐
+        **Files to modify:** `src/components/MovieList.vue`, `src/utils/imageOptimizer.ts` (create)
+        
+        **Description:** Implement responsive images with multiple sizes, WebP format support, and loading optimization.
+        
+        **Skills:** Image formats, responsive design, browser compatibility
+        
+        ## Task 10B: Lazy Loading & Virtual Scrolling ⭐⭐⭐
+        **Files to modify:** `src/components/VirtualList.vue` (create), `src/utils/lazyLoad.ts` (create)
+        
+        **Description:** Create a virtual scrolling system that only renders visible movie cards for optimal performance.
+        
+        **Skills:** Virtual scrolling, Intersection Observer, memory management
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 10A: Image Optimization"
+        - "Task 10B: Lazy Loading & Virtual Scrolling"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 10A (Image Optimization):
+        - [ ] Create imageOptimizer.ts utility for size calculation
+        - [ ] Implement responsive image sizes (300w, 500w, 780w)
+        - [ ] Add WebP format with fallback to JPG
+        - [ ] Use loading="lazy" attribute for off-screen images
+        - [ ] Add blur placeholder while images load
+        - [ ] Measure Core Web Vitals improvement
+        - [ ] Test on slow network connections
+        
+        ## If choosing Task 10B (Lazy Loading & Virtual Scrolling):
+        - [ ] Create VirtualList.vue component
+        - [ ] Calculate visible items based on container height
+        - [ ] Implement buffer zones (5 items above/below visible)
+        - [ ] Create lazyLoad.ts with Intersection Observer
+        - [ ] Handle dynamic item heights
+        - [ ] Add smooth scrolling with momentum
+        - [ ] Test performance with 1000+ movie items
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/10-performance-[task])"
+        - label: "I have updated any relevant documentation"

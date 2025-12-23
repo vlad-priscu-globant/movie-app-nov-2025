@@ -1,0 +1,79 @@
+name: "Student 08 - Form Validation"
+description: Choose between login form or review submission form
+title: "Student 08 - [CHOOSE: Login Form OR Review Form]"
+labels: ["student-exercise", "forms", "validation"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 📝 Form Validation - Student 08
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 8A: User Login Form ⭐⭐
+        **Files to modify:** `src/components/AuthForm.vue` (create), `src/stores/authStore.ts` (create)
+        
+        **Description:** Create a login form with email/password validation, error states, and loading indicators.
+        
+        **Skills:** Form validation, input states, user feedback
+        
+        ## Task 8B: Movie Review Form ⭐⭐⭐
+        **Files to modify:** `src/components/ReviewForm.vue` (create), `src/utils/validation.ts` (create)
+        
+        **Description:** Build a movie review submission form with rich text input, rating validation, and character limits.
+        
+        **Skills:** Complex validation, text area handling, form state management
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 8A: User Login Form"
+        - "Task 8B: Movie Review Form"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 8A (User Login Form):
+        - [ ] Create AuthForm.vue with email and password fields
+        - [ ] Validate email format using regex
+        - [ ] Require minimum 8 character password
+        - [ ] Show/hide password toggle functionality
+        - [ ] Display validation errors inline
+        - [ ] Add loading state during form submission
+        - [ ] Implement form reset after successful login
+        
+        ## If choosing Task 8B (Movie Review Form):
+        - [ ] Create ReviewForm.vue with rating and text areas
+        - [ ] Validate rating is between 1-10
+        - [ ] Implement character count (min 50, max 500 characters)
+        - [ ] Create validation.ts with reusable validation functions
+        - [ ] Add real-time validation feedback
+        - [ ] Prevent form submission until valid
+        - [ ] Show success message after submission
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/08-forms-[task])"
+        - label: "I have updated any relevant documentation"

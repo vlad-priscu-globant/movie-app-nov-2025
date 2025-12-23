@@ -1,0 +1,79 @@
+name: "Student 11 - Data Management"
+description: Choose between data caching or offline support
+title: "Student 11 - [CHOOSE: Data Caching OR Offline Support]"
+labels: ["student-exercise", "data", "caching"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 💾 Data Management - Student 11
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 11A: Smart Data Caching ⭐⭐
+        **Files to modify:** `src/stores/cacheStore.ts` (create), `src/api/tmdb.ts`
+        
+        **Description:** Implement intelligent data caching with TTL (Time To Live) and cache invalidation strategies.
+        
+        **Skills:** Cache strategies, TTL management, data freshness
+        
+        ## Task 11B: Offline Support ⭐⭐⭐
+        **Files to modify:** `src/utils/offlineManager.ts` (create), `src/stores/offlineStore.ts` (create)
+        
+        **Description:** Add offline capability using IndexedDB and service worker-like functionality for previously viewed movies.
+        
+        **Skills:** IndexedDB, offline patterns, data synchronization
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 11A: Smart Data Caching"
+        - "Task 11B: Offline Support"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 11A (Smart Data Caching):
+        - [ ] Create cacheStore.ts with TTL-based caching
+        - [ ] Implement 5-minute cache for search results
+        - [ ] Add 1-hour cache for movie details
+        - [ ] Create cache invalidation on data updates
+        - [ ] Add cache size limits (50MB max)
+        - [ ] Implement LRU (Least Recently Used) eviction
+        - [ ] Show cache status in developer tools
+        
+        ## If choosing Task 11B (Offline Support):
+        - [ ] Create offlineManager.ts utility
+        - [ ] Store viewed movies in IndexedDB
+        - [ ] Detect online/offline status
+        - [ ] Show offline indicator in UI
+        - [ ] Enable browsing of cached movies when offline
+        - [ ] Queue actions for when connection returns
+        - [ ] Test airplane mode scenarios
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/11-data-[task])"
+        - label: "I have updated any relevant documentation"

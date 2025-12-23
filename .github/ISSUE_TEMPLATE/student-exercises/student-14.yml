@@ -1,0 +1,79 @@
+name: "Student 14 - Documentation & Deployment"
+description: Choose between comprehensive docs or deployment setup
+title: "Student 14 - [CHOOSE: Documentation OR Deployment Guide]"
+labels: ["student-exercise", "documentation", "deployment"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 📚 Documentation & Deployment - Student 14
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 14A: Comprehensive Documentation ⭐⭐
+        **Files to modify:** `CONTRIBUTING.md` (create), `API_DOCS.md` (create), `COMPONENT_GUIDE.md` (create)
+        
+        **Description:** Create comprehensive documentation for the project including contribution guidelines, API documentation, and component usage guides.
+        
+        **Skills:** Technical writing, documentation standards, markdown
+        
+        ## Task 14B: Deployment Guide ⭐⭐⭐
+        **Files to modify:** `DEPLOYMENT.md` (create), `docker-compose.yml` (create), `netlify.toml` (create)
+        
+        **Description:** Create deployment configurations and guides for multiple platforms (Vercel, Netlify, Docker).
+        
+        **Skills:** DevOps, containerization, platform deployment
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 14A: Comprehensive Documentation"
+        - "Task 14B: Deployment Guide"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 14A (Comprehensive Documentation):
+        - [ ] Create CONTRIBUTING.md with clear contribution guidelines
+        - [ ] Document all API endpoints in API_DOCS.md
+        - [ ] Create component usage guide with examples
+        - [ ] Add JSDoc comments to all major functions
+        - [ ] Create code style guide section
+        - [ ] Document environment setup instructions
+        - [ ] Add troubleshooting section
+        
+        ## If choosing Task 14B (Deployment Guide):
+        - [ ] Create DEPLOYMENT.md with step-by-step instructions
+        - [ ] Set up Docker configuration with multi-stage build
+        - [ ] Create Netlify deployment configuration
+        - [ ] Add Vercel deployment settings
+        - [ ] Document environment variable requirements
+        - [ ] Create production build optimization guide
+        - [ ] Add monitoring and error tracking setup
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/14-docs-[task])"
+        - label: "I have updated any relevant documentation"

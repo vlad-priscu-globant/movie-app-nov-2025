@@ -1,0 +1,76 @@
+name: "Student 02 - Search Enhancements"
+description: Choose between search debouncing or search history
+title: "Student 02 - [CHOOSE: Search Debounce OR Search History]"
+labels: ["student-exercise", "search", "performance"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🔍 Search Enhancements - Student 02
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 2A: Search Debounce ⭐⭐
+        **Files to modify:** `src/components/Search.vue`, `src/utils/debounce.ts` (create)
+        
+        **Description:** Currently, the search API is called on every keystroke. Implement a 300ms debounce to reduce API calls and improve performance.
+        
+        **Skills:** Event handling, setTimeout/clearTimeout, utility functions
+        
+        ## Task 2B: Search History ⭐⭐⭐
+        **Files to modify:** `src/components/Search.vue`, `src/stores/searchStore.ts` (create)
+        
+        **Description:** Add autocomplete functionality that shows previous search terms in a dropdown below the search input.
+        
+        **Skills:** Pinia state management, event handling, CSS positioning
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 2A: Search Debounce"
+        - "Task 2B: Search History"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 2A (Search Debounce):
+        - [ ] Create debounce utility function in utils/debounce.ts
+        - [ ] Implement 300ms delay before API call
+        - [ ] Clear previous timeout when user types
+        - [ ] Test with rapid typing to ensure only final search executes
+        - [ ] Maintain immediate search for empty input (clear results)
+        
+        ## If choosing Task 2B (Search History):
+        - [ ] Create searchStore.ts with Pinia
+        - [ ] Store up to 10 recent search terms
+        - [ ] Create dropdown component for suggestions
+        - [ ] Implement click-to-select functionality
+        - [ ] Style dropdown to match app theme
+        - [ ] Add keyboard navigation (up/down arrows)
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/02-search-[task])"
+        - label: "I have updated any relevant documentation"

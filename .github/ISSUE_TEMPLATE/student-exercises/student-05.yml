@@ -1,0 +1,79 @@
+name: "Student 05 - Error Handling"
+description: Choose between error toast system or API error recovery
+title: "Student 05 - [CHOOSE: Error Toasts OR API Error Recovery]"
+labels: ["student-exercise", "error-handling", "ux"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🚨 Error Handling - Student 05
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 5A: Error Toast System ⭐⭐
+        **Files to modify:** `src/components/ErrorToast.vue` (create), `src/stores/errorStore.ts` (create)
+        
+        **Description:** Create a global toast notification system that displays user-friendly error messages with auto-dismiss functionality.
+        
+        **Skills:** Vue composables, Pinia state management, CSS transitions
+        
+        ## Task 5B: API Error Recovery ⭐⭐⭐
+        **Files to modify:** `src/api/tmdb.ts`, `src/utils/errorHandler.ts` (create)
+        
+        **Description:** Implement intelligent error handling with retry logic, fallback data, and detailed error categorization.
+        
+        **Skills:** Async/await, error categorization, retry patterns
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 5A: Error Toast System"
+        - "Task 5B: API Error Recovery"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 5A (Error Toast System):
+        - [ ] Create ErrorToast.vue component with variants (error, warning, info)
+        - [ ] Create errorStore.ts to manage toast queue
+        - [ ] Add auto-dismiss after 5 seconds
+        - [ ] Implement slide-in/slide-out animations
+        - [ ] Position toasts in top-right corner
+        - [ ] Allow manual dismiss with X button
+        - [ ] Test with multiple simultaneous toasts
+        
+        ## If choosing Task 5B (API Error Recovery):
+        - [ ] Create errorHandler.ts utility module
+        - [ ] Implement exponential backoff retry (3 attempts)
+        - [ ] Categorize errors (network, rate limit, server, etc.)
+        - [ ] Add fallback to cached data when available
+        - [ ] Create user-friendly error messages
+        - [ ] Log detailed errors for debugging
+        - [ ] Test with network offline scenarios
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/05-error-[task])"
+        - label: "I have updated any relevant documentation"

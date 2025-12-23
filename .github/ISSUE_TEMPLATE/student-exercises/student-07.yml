@@ -1,0 +1,79 @@
+name: "Student 07 - Accessibility Features"
+description: Choose between ARIA labels or keyboard navigation
+title: "Student 07 - [CHOOSE: ARIA Labels OR Keyboard Navigation]"
+labels: ["student-exercise", "accessibility", "a11y"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # ♿ Accessibility Features - Student 07
+        
+        **Choose ONE of the following tasks:**
+        
+        ## Task 7A: ARIA Labels & Screen Readers ⭐⭐
+        **Files to modify:** `src/components/Search.vue`, `src/components/MovieList.vue`, `src/components/MovieRating.vue`
+        
+        **Description:** Add comprehensive ARIA labels, roles, and descriptions to make the app fully accessible to screen readers.
+        
+        **Skills:** ARIA attributes, semantic HTML, screen reader testing
+        
+        ## Task 7B: Keyboard Navigation ⭐⭐⭐
+        **Files to modify:** `src/utils/focusManager.ts` (create), `src/components/MovieList.vue`
+        
+        **Description:** Implement full keyboard navigation with proper focus management and visual focus indicators.
+        
+        **Skills:** Event handling, focus management, CSS focus states
+
+  - type: dropdown
+    id: task-choice
+    attributes:
+      label: "Select Your Task"
+      description: "Choose which task you want to work on"
+      options:
+        - "Task 7A: ARIA Labels & Screen Readers"
+        - "Task 7B: Keyboard Navigation"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Check off tasks as you complete them"
+      value: |
+        ## If choosing Task 7A (ARIA Labels & Screen Readers):
+        - [ ] Add aria-label to search input with clear description
+        - [ ] Implement aria-live regions for search results
+        - [ ] Add role="button" and aria-pressed for rating stars
+        - [ ] Create descriptive alt text for movie posters
+        - [ ] Add aria-expanded for any expandable content
+        - [ ] Test with Windows Narrator or NVDA screen reader
+        - [ ] Ensure color is not the only way to convey information
+        
+        ## If choosing Task 7B (Keyboard Navigation):
+        - [ ] Create focusManager.ts utility for focus control
+        - [ ] Make all interactive elements keyboard accessible
+        - [ ] Implement tab order management
+        - [ ] Add visible focus indicators with high contrast
+        - [ ] Support Enter and Space key activation
+        - [ ] Handle Escape key to close modals/dropdowns
+        - [ ] Test navigation without using mouse
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: "Implementation Notes"
+      description: "Add your questions or implementation approach here"
+      placeholder: "Describe your approach, questions, or any blockers you encounter..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Pre-submission Checklist"
+      description: "Ensure you've completed these steps before submitting your PR"
+      options:
+        - label: "I have tested my changes locally"
+        - label: "I have followed the existing code style"
+        - label: "I have created a feature branch (feat/07-a11y-[task])"
+        - label: "I have updated any relevant documentation"
