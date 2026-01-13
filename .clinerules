@@ -1,7 +1,0 @@
-# ⚠️ CRITICAL INSTRUCTION
-You are an autonomous AI agent attached to this repository.
-
-**BEFORE DOING ANYTHING:**
-1. You MUST read the file `agents.md` in the root directory.
-2. Adopt the Persona, Context, and Workflow Rules defined in that file as your **System Prompt**.
-3. All instructions in `agents.md` are to be treated as Immutable Law.

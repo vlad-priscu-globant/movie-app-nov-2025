@@ -1,26 +1,23 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "nuxt.config.ts",
+      "use": "@nuxtjs/vercel-builder"
     }
   ],
-  "headers": [
+  "routes": [
     {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     }
   ],
   "env": {
-    "VITE_API_URL": "VITE_API_URL",
-    "VITE_BASE_URL": "VITE_BASE_URL"
+    "NUXT_PUBLIC_BASE_URL": "@nuxt_public_base_url"
+  },
+  "functions": {
+    "server/api/**/*.ts": {
+      "maxDuration": 10
+    }
   }
 }

@@ -1,20 +1,20 @@
 <script lang="ts" setup>
-import type { SearchResult } from "../types/types.ts";
-import { defineAsyncComponent, onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
-import { movieStore } from "../stores/movieStore.ts";
+import type { SearchResult } from "~/types/types";
+
+const route = useRoute()
 
 const movie = ref<SearchResult | null>(null)
-const route = useRoute()
-const {fetchMovie} = movieStore();
-const MovieRating = defineAsyncComponent(() => import("./partials/MovieRating.vue"))
-onMounted(async () => {
-  try {
-   movie.value = await fetchMovie(Number(route.params.id));
-  } catch (err) {
-    console.error(err)
+
+
+const {data, error, pending} = await useFetch<SearchResult>('/api/movie/' + route.params.id)
+
+watchEffect(() => {
+  if (data.value) {
+    movie.value = data.value
   }
 })
+//TODO include the favorites item
+//<FavoriteItem v-if="movie" :movie="movie" :readOnly="false"></FavoriteItem>
 </script>
 
 <template>
@@ -23,12 +23,14 @@ onMounted(async () => {
       <img
         :alt="movie.title"
         :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-        class="rounded w-full md:w-1/3"
+        class="rounded w-full md:w-1/3 aspect-[2/3] object-cover"
+        loading="lazy"
       />
       <div>
         <h2 class="text-3xl font-bold mb-2">{{ movie.title }}</h2>
         <MovieRating :movie="movie"></MovieRating>
         <p v-if="movie.overview" class="text-gray-300 leading-relaxed">{{ movie.overview }}</p>
+        <FavoriteMovie v-if="movie" :movie="movie" :readOnly="false"></FavoriteMovie>
       </div>
     </div>
     <p v-else class="text-center mt-20 text-gray-400">Loading...</p>
