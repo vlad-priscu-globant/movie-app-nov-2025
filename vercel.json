@@ -5,8 +5,5 @@
       "src": "/api/(.*)",
       "dest": "/api/$1"
     }
-  ],
-  "env": {
-    "NUXT_PUBLIC_BASE_URL": "@nuxt_public_base_url"
-  }
+  ]
 }
