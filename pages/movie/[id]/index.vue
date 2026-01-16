@@ -18,6 +18,14 @@ watchEffect(() => {
 </script>
 
 <template>
+  <div class="max-w-5xl mx-auto mt-8 p-4">
+    <NuxtLink to="/" class="inline-flex items-center text-red-500 hover:text-red-400 mb-6 transition">
+      ← Back to Movies
+    </NuxtLink>
+    </div>
+</template>
+
+<template>
   <div class="max-w-5xl mx-auto mt-8">
     <div v-if="movie" class="flex flex-col md:flex-row gap-6">
       <img
