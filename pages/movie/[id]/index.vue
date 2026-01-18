@@ -23,9 +23,6 @@ watchEffect(() => {
       ← Back to Movies
     </NuxtLink>
     </div>
-</template>
-
-<template>
   <div class="max-w-5xl mx-auto mt-8">
     <div v-if="movie" class="flex flex-col md:flex-row gap-6">
       <img
