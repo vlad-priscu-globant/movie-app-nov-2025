@@ -1,43 +1,35 @@
-import { serverSupabaseClient } from '#supabase/server'
-import { getAuthenticatedUser } from "../utils/getUser";
+import { serverSupabaseUser, serverSupabaseClient } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
-  const user = await getAuthenticatedUser(event)
-  const client = await serverSupabaseClient(event)
+  const user = await serverSupabaseUser(event)
+
+  if (!user) {
+    throw createError({ statusCode: 401, message: 'Trebuie să fii logat.' })
+  }
+
   const body = await readBody(event)
+  const { movie_id } = body
 
-  if (!body || !body.id) {
-    throw createError({ statusCode: 400, message: 'Missing movie ID' })
+  if (!movie_id) {
+    throw createError({ statusCode: 400, message: 'Lipsește ID-ul filmului.' })
   }
 
-  // Check if the movie belongs to the current user
-  const { data: favorite } = await client
-    .from('favorites')
-    .select('id')
-    .eq('user_id', user.id)
-    .eq('id', body.id)
-    .maybeSingle()
+  console.log(`🟠 [DEBUG] Cerere de ștergere pentru filmul ID: ${movie_id}`)
 
-  if (!favorite) {
-    throw createError({ statusCode: 403, message: 'Not your favorite to delete' })
-  }
+  const client = await serverSupabaseClient(event)
 
-  /**
-   * SQL equivalent
-   * DELETE FROM favorites
-   * WHERE id = FAVORITE_ID_VALUE
-   *   AND user_id = 'USER_ID_VALUE';
-   */
   const { error } = await client
     .from('favorites')
     .delete()
-    .eq('id', body.id)
     .eq('user_id', user.id)
+    .eq('movie_id', movie_id)
 
   if (error) {
-    console.error('[DELETE favorites] Supabase error:', error)
-    throw createError({ statusCode: 500, message: 'Failed to delete favorite' })
+    console.error('🔴 [DEBUG] EROARE la ștergere:', error)
+    throw createError({ statusCode: 500, message: 'Nu s-a putut șterge filmul.' })
   }
 
+  console.log('🗑️  [DEBUG] Film șters cu succes din baza de date!')
+  
   return { success: true }
 })

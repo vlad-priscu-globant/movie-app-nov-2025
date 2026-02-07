@@ -1,54 +1,58 @@
-import { getAuthenticatedUser } from "~/server/utils/getUser";
-import { serverSupabaseClient } from "#supabase/server";
+import { serverSupabaseUser, serverSupabaseClient } from '#supabase/server'
 
-export default defineEventHandler(async(event) => {
-  const user = await getAuthenticatedUser(event);
-  const client = await serverSupabaseClient<any>(event)
-  const body = await readBody(event)
-  const { movie_id, movie_data } = body || {}
-  if(!movie_id || !movie_data) {
-    throw createError({ statusCode: 400, message: 'Missing movie_id or movie_data' })
+export default defineEventHandler(async (event) => {
+  // 1. Verificăm autentificarea folosind funcția standard Nuxt
+  const user = await serverSupabaseUser(event)
+
+  if (!user) {
+    console.log('🔴 [DEBUG] EROARE: Utilizatorul nu este logat!')
+    throw createError({ statusCode: 401, message: 'Trebuie să fii logat pentru a salva favorite.' })
   }
 
-  /**
-   * SQL
-   * SELECT id
-   * FROM favorites
-   * WHERE user_id = 'USER_ID_VALUE'
-   *   AND movie_id = MOVIE_ID_VALUE
-   * LIMIT 1;
-   */
-  const { data: existing, error: checkError } = await client
+  console.log('🟢 [DEBUG] User logat:', user.id)
+
+  const client = await serverSupabaseClient(event)
+  const body = await readBody(event)
+  const { movie_id, movie_data } = body
+
+  if (!movie_id || !movie_data) {
+    throw createError({ statusCode: 400, message: 'Lipsesc datele filmului' })
+  }
+
+  // 2. Verificăm dacă filmul există deja (ca să nu avem duplicate)
+  const { data: existing } = await client
     .from('favorites')
     .select('id')
     .eq('user_id', user.id)
     .eq('movie_id', movie_id)
     .maybeSingle()
 
-  if (checkError) {
-    console.error('[POST favorites] Check failed:', checkError)
-    throw createError({ statusCode: 500, message: 'Failed to check existing favorites' })
-  }
-
   if (existing) {
-    throw createError({ statusCode: 409, message: 'Already in favorites' })
+    console.log('🟡 [DEBUG] Filmul este deja în listă.')
+    return { success: true, message: 'Deja salvat' }
   }
 
-  /**
-   * SQL equivalent
-   * INSERT INTO favorites (user_id, movie_id, movie_data)
-   * VALUES ('USER_ID_VALUE', MOVIE_ID_VALUE, 'MOVIE_DATA_JSON');
-   */
+  // 3. INSERAREA (Salvăm și JSON-ul, dar și coloanele separate)
   const { error } = await client.from('favorites').insert({
     user_id: user.id,
-    movie_id,
-    movie_data,
+    movie_id: movie_id,
+    
+    // Coloana JSON nouă
+    movie_data: movie_data,
+
+    // Coloanele vechi (e bine să le avem completate pentru statistici sau afișare simplă)
+    title: movie_data.title,
+    poster_path: movie_data.poster_path,
+    overview: movie_data.overview,
+    vote_average: movie_data.vote_average,
+    release_date: movie_data.release_date
   })
 
   if (error) {
-    console.error('[POST favorites] Insert failed:', error)
-    throw createError({ statusCode: 500, message: 'Failed to add favorite' })
+    console.error('🔴 [DEBUG] EROARE SUPABASE LA INSERT:', error)
+    throw createError({ statusCode: 500, message: error.message })
   }
 
+  console.log('✅ [DEBUG] Film salvat cu succes în baza de date!')
   return { success: true }
 })
